@@ -17,8 +17,14 @@ public class ClazzServiceImpl {
 
     public PageResult page(ClazzQuerypram clazzQuerypram){
         PageHelper.startPage(clazzQuerypram.getPage(),clazzQuerypram.getPageSize());
-        List<Clazz> clazzList = clazzMapper.list(clazzQuerypram);
+        List<Clazz> clazzList = clazzMapper.clazzList(clazzQuerypram);
         Page<Clazz> p= (Page<Clazz>)clazzList;
         return  new PageResult(p.getTotal(),p.getResult());
+    }
+    public List<String> list(){
+        return clazzMapper.list();
+    }
+    public void  save( Clazz clazz){
+        clazzMapper.save(clazz);
     }
 }

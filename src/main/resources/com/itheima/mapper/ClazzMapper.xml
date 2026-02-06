@@ -1,5 +1,5 @@
 <mapper namespace="com.itheima.mapper.ClazzMapper">
-    <select id="list" resultType="com.itheima.pojo.Clazz">
+    <select id="clazzList" resultType="com.itheima.pojo.Clazz">
         SELECT
         c.*,
         -- 动态计算状态逻辑,这里是我之前没写出来的地方
