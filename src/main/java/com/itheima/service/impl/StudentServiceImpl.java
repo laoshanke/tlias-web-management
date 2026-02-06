@@ -29,4 +29,14 @@ public class StudentServiceImpl implements StudentService {
         student.setCreateTime(LocalDateTime.now());
         studentMapper.save(student);
     }
+    @Override
+    public  Student getById(Integer id){
+        return studentMapper.getById(id);
+    }
+    @Transactional(rollbackFor =  Exception.class)
+    @Override
+    public void update(Student student){
+        studentMapper.update(student);
+    }
+
 }

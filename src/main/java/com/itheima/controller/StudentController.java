@@ -7,10 +7,7 @@ import com.itheima.pojo.StudentQueryParam;
 import com.itheima.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequestMapping("/students")
@@ -27,6 +24,17 @@ public class StudentController {
     public  Result save(@RequestBody Student student){
         log.info("添加如下学员" + student);
         studentService.save(student);
+        return Result.success();
+    }
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id){
+        log.info("根据id查询学员："+ id);
+        return Result.success( studentService.getById(id));
+    }
+    @PostMapping
+    public  Result update(@RequestBody Student student){
+        log.info("修改学员：" + student);
+        studentService.update(student);
         return Result.success();
     }
 
