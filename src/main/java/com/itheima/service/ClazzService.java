@@ -32,4 +32,15 @@ public interface ClazzService {
      */
     public Clazz getById(Integer id);
 
+    /**
+     * 更新班级
+     * @param clazz
+     */
+    public  void  update(Clazz clazz);
+
+    /**
+     * 删除id对应的班级
+     * @param id
+     */
+    public  void delete(Integer id);
 }

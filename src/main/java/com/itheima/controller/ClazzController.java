@@ -41,4 +41,16 @@ public class ClazzController {
         log.info("查询对应ID对应的班级：ID" + id);
         return Result.success(clazzService.getById(id));
     }
+    @PutMapping
+    public  Result update(@RequestBody Clazz clazz){
+        log.info("修改班级：" + clazz);
+        clazzService.update(clazz);
+        return Result.success();
+    }
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id){
+        log.info("删除班级："+ id);
+        clazzService.delete(id);
+        return Result.success();
+    }
 }
