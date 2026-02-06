@@ -1,0 +1,25 @@
+<mapper namespace="com.itheima.mapper.ClazzMapper">
+    <select id="list" resultType="com.itheima.pojo.Clazz">
+        SELECT
+        c.*,
+        -- 动态计算状态逻辑,这里是我之前没写出来的地方
+        CASE
+        WHEN CURDATE() &lt; c.begin_date THEN '未开班'
+        WHEN CURDATE() &gt; c.end_date THEN '已结课'
+        ELSE '在读中'
+        END AS status
+        FROM clazz c
+        <where>
+            <if test="name != null and name != ''">
+                AND c.name LIKE concat('%', #{name}, '%')
+            </if>
+            <if test="begin != null">
+                AND c.begin_date &gt;= #{begin}
+            </if>
+            <if test="end != null">
+                AND c.end_date &lt;= #{end}
+            </if>
+        </where>
+        ORDER BY c.create_time DESC
+    </select>
+</mapper>
