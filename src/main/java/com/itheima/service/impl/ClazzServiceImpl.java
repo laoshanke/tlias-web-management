@@ -27,4 +27,7 @@ public class ClazzServiceImpl {
     public void  save( Clazz clazz){
         clazzMapper.save(clazz);
     }
+    public Clazz getById(Integer id){
+        return clazzMapper.getById(id);
+    }
 }

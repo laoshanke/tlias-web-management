@@ -36,4 +36,9 @@ public class ClazzController {
         clazzService.save(clazz);
         return Result.success();
     }
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id){
+        log.info("查询对应ID对应的班级：ID" + id);
+        return Result.success(clazzService.getById(id));
+    }
 }

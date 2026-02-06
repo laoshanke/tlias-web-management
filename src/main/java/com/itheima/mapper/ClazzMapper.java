@@ -24,4 +24,7 @@ public interface ClazzMapper {
     @Insert("INSERT into clazz(name,room,begin_date ,end_date ,master_id ,subject)" +
     "values(#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject})")
     public  void  save(Clazz clazz);
+
+    @Select("SELECT c.* FROM clazz c WHERE c.id = id")
+    public  Clazz getById(Integer id);
 }

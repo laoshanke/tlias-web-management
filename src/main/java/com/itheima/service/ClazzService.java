@@ -25,4 +25,11 @@ public interface ClazzService {
      */
     public  void save(Clazz clazz);
 
+    /**
+     * 依据id检查班级
+     * @param id
+     * @return
+     */
+    public Clazz getById(Integer id);
+
 }
