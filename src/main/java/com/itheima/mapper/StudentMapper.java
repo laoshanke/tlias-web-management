@@ -19,7 +19,7 @@ public interface StudentMapper {
             " values(#{name},#{no},#{gender},#{phone},#{degree},#{clazzId},#{idCard},#{isCollege},#{address},#{graduationDate},#{createTime},0,0)")
     void save(Student student);
 
-    @Select("SELECT s.(*) FROM student WHERE s.id = #{id}")
+    @Select("SELECT s.*) FROM student WHERE s.id = #{id}")
     Student getById(Integer id);
 
     //更新对应学生
