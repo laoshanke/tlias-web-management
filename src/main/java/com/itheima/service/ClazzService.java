@@ -2,6 +2,7 @@ package com.itheima.service;
 
 import com.itheima.pojo.Clazz;
 import com.itheima.pojo.ClazzQuerypram;
+import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageResult;
 
 import java.time.LocalDate;
@@ -17,7 +18,7 @@ public interface ClazzService {
     /**
      * 查询所有班主任
      */
-    public List<String> list();
+    public List<Emp> list();
 
     /**
      * 新增班级

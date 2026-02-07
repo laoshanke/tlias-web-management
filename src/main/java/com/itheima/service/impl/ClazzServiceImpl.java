@@ -4,18 +4,20 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.exception.BusinessException;
 import com.itheima.mapper.ClazzMapper;
-import com.itheima.pojo.Clazz;
-import com.itheima.pojo.ClazzQuerypram;
-import com.itheima.pojo.PageResult;
+import com.itheima.mapper.EmpMapper;
+import com.itheima.pojo.*;
 import com.itheima.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.itheima.mapper.StudentMapper;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class ClazzServiceImpl implements ClazzService {
+    @Autowired
+    private EmpMapper empMapper;
     @Autowired
     private ClazzMapper clazzMapper;
     @Autowired
@@ -28,12 +30,14 @@ public class ClazzServiceImpl implements ClazzService {
         return  new PageResult(p.getTotal(),p.getResult());
     }
     @Override
-    public List<String> list(){
-        return clazzMapper.list();
+    public List<Emp> list(){
+        return empMapper.list(new EmpQueryParam());
     }
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void  save( Clazz clazz){
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazz.setCreateTime(LocalDateTime.now());
         clazzMapper.save(clazz);
     }
     @Override
@@ -43,7 +47,8 @@ public class ClazzServiceImpl implements ClazzService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(Clazz clazz){
-        clazzMapper.update(clazz);
+        clazz.setUpdateTime(LocalDateTime.now());
+    clazzMapper.update(clazz);
     }
     @Transactional(rollbackFor = Exception.class) // 建议加上事务控制
     @Override
