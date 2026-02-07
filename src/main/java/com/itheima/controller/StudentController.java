@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RequestMapping("/students")
 public class StudentController {
@@ -35,6 +37,18 @@ public class StudentController {
     public  Result update(@RequestBody Student student){
         log.info("修改学员：" + student);
         studentService.update(student);
+        return Result.success();
+    }
+
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable List<Integer> ids){
+        log.info("删除如下id学员：" + ids);
+        studentService.delete(ids);
+        return Result.success();
+    }
+    @PostMapping("/violation/{id}/{score}")
+    public  Result violation(@PathVariable("id") Integer id ,@PathVariable("score") short score){
+        studentService.violation(id ,score);
         return Result.success();
     }
 

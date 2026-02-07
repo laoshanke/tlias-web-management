@@ -4,6 +4,8 @@ import com.itheima.pojo.PageResult;
 import com.itheima.pojo.Student;
 import com.itheima.pojo.StudentQueryParam;
 
+import java.util.List;
+
 public interface StudentService {
 
     /**
@@ -31,4 +33,17 @@ public interface StudentService {
      * @param student
      */
     void update(Student student);
+
+    /**
+     * 删除ids中对应学员
+     * @param ids
+     */
+    void delete(List<Integer> ids);
+
+    /**
+     * 对id对应的学员增加一次违纪，并增加score违纪扣分
+     * @param id
+     * @param score
+     */
+    void violation(Integer id ,short score);
 }

@@ -36,4 +36,11 @@
         </set>
         where id = #{id}
     </update>
+    <delete id="delete">
+        delete from student where in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">//item指的是循环变量的名称
+            #{id}
+        </foreach>
+
+    </delete>
 </mapper>

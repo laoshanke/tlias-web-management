@@ -39,4 +39,21 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.update(student);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void delete(List<Integer> ids){
+        studentMapper.delete(ids);
+    }
+    @Transactional(rollbackFor =  Exception.class)
+    @Override
+    public void violation(Integer id, short score){
+
+        Student student = new Student();
+        student.setCreateTime(LocalDateTime.now());
+        student.setId(id);
+        student.setViolationScore(score);
+        studentMapper.violation(student);
+    }
+
+
 }
