@@ -14,4 +14,17 @@ public interface ReportService {
      * 统计员工性别信息
      */
     List<Map> getEmpGenderData();
+
+    /**
+     * 统计学生学历信息
+     * @return
+     */
+
+    List<Map> getStudentDegreeData();
+
+    /**
+     * 统计班级中学生人数
+     * @return
+     */
+    List<Map> getStudentCountData();
 }

@@ -43,4 +43,20 @@
         </foreach>
 
     </delete>
+    <select id="getStudentDegreeData" resultType="java.util.Map">
+        select (
+        case degree when 1 then "初中"
+        when 2 then "高中"
+        when 3 then "大专"
+        when 4 then "本科"
+        when 5 then "硕士"
+        when 6 then "博士") deg
+        count(*) total
+        from student
+        group by degree
+        order by total
+    </select>
+    <select id="getStudentCountData" resultType="java.util.Map">
+        select s.clazzName count(*) total from student s inner join clazz c on s.clazzName = c.name group by s.clazzName order by total
+    </select>
 </mapper>

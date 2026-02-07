@@ -51,4 +51,7 @@ public interface EmpMapper {
     @MapKey("name")
     List<Map> countEmpGenderData();
 
+    @Select("SELECT COUNT(*) FROM EMP e WHERE e.deptId = #{id}")
+    Integer countEmpByDeptId(Integer id);
+
 }

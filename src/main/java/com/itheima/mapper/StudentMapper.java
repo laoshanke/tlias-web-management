@@ -2,12 +2,10 @@ package com.itheima.mapper;
 
 import com.itheima.pojo.Student;
 import com.itheima.pojo.StudentQueryParam;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentMapper {
 
@@ -31,4 +29,10 @@ public interface StudentMapper {
 
     @Update("update student s set violationCount = 1 + s.violationCount, violationScore = #{violationScore},updateTime = #{updateTime} WHERE id = #{id}")
     void violation(Student student);
+
+    @MapKey("deg")
+    List<Map> getStudentDegreeData();
+
+    @MapKey("clazzName")
+    List<Map> getStudentCountData();
 }
